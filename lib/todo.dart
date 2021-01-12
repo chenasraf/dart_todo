@@ -91,10 +91,13 @@ class Project {
   List<Todo> todos = [];
   File file;
 
-  Project(this.file);
+  Project.fromFile(this.file);
 
-  void _dumpToFile() {
-    file.writeAsString(toMarkdown());
+  Project.defaultFile() : file = File('.todo');
+
+  void _dumpToFile() async {
+    print(toMarkdown());
+    await file.writeAsString(toMarkdown());
   }
 
   void create(String name) {
@@ -104,6 +107,9 @@ class Project {
   void loadTodos() async {
     final content = await file.readAsLinesSync();
     for (final line in content) {
+      if (line.trim().isEmpty) {
+        continue;
+      }
       todos.add(Todo.parseLine(line, onUpdate: _dumpToFile));
     }
   }
@@ -114,15 +120,16 @@ class Project {
     }
   }
 
-  String toMarkdown() => todos.map((t) => t.toMarkdown()).join('\r\n');
+  String toMarkdown() =>
+      todos.where((i) => i != null).map((t) => t.toMarkdown()).join('\r\n');
 
-  void addTodo(Todo todo) {
+  Future<void> addTodo(Todo todo) async {
     todos.add(todo.copyWith(onUpdate: _dumpToFile));
-    _dumpToFile();
+    await _dumpToFile();
   }
 
-  void removeTodo(Todo todo) {
+  Future<void> removeTodo(Todo todo) async {
     todos.removeWhere((t) => t.title == todo.title);
-    _dumpToFile();
+    await _dumpToFile();
   }
 }

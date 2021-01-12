@@ -50,19 +50,26 @@ class GUI {
         _print('');
       }
     }
-    _print((' ' * 10) + '[enter/space] - toggle | [esc/q] - quit');
+    _print(
+      (' ' * 10) +
+          '[enter/space] - toggle | '
+              '[c/a] - add todo | '
+              '[d/backspace] - remove todo | '
+              '[esc/q] - quit',
+    );
     _print(verticalBorder);
   }
 
   String _ensureLength(String message) =>
       '|' + message.padRight(width - '||\n'.length, ' ') + '|\n';
+
   void _print(String message) => console.write(_ensureLength(message));
 
   void _stdinListener(List<int> charCodes) {
     if (!frozen) {
       _handleGUIInput(keyMap[charCodes.last]);
     } else {
-      final title = String.fromCharCodes(charCodes);
+      final title = String.fromCharCodes(charCodes).trim();
       project.addTodo(Todo(title: title));
       _exitTextInputMode();
     }
@@ -98,6 +105,9 @@ class GUI {
       case Key.d:
       case Key.backspace:
         project.removeTodo(currentTodo);
+        if (activeIndex > project.todos.length - 1) {
+          activeIndex = project.todos.length - 1;
+        }
         break;
       case Key.q:
       case Key.esc:
