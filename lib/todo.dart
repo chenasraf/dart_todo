@@ -1,5 +1,4 @@
 import 'dart:io';
-part 'file_handler.dart';
 
 class Todo {
   String _title;
@@ -96,27 +95,17 @@ class Project {
   Project.defaultFile() : file = File('.todo');
 
   void _dumpToFile() async {
-    print(toMarkdown());
     await file.writeAsString(toMarkdown());
   }
 
-  void create(String name) {
-    _checkAndCreateFile(File('$name.todo'));
-  }
-
   void loadTodos() async {
+    todos.clear();
     final content = await file.readAsLinesSync();
     for (final line in content) {
       if (line.trim().isEmpty) {
         continue;
       }
       todos.add(Todo.parseLine(line, onUpdate: _dumpToFile));
-    }
-  }
-
-  Future<void> _checkAndCreateFile(File file) async {
-    if (await file.exists() == false) {
-      await file.create();
     }
   }
 
