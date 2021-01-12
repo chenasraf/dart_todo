@@ -1,6 +1,6 @@
 # dart_todo
 
-A todo CLI tool, written in dart.
+A fully fledged, simple to use to do terminal app with a GUI. Written in dart.
 
 ## Getting started
 
