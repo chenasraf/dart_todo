@@ -1,4 +1,4 @@
-import 'package:dart_todo/todo.dart';
+import 'package:todo_cli/todo.dart';
 import 'package:test/test.dart';
 
 void main() {

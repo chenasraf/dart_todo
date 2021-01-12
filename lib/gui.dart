@@ -1,7 +1,7 @@
 import 'dart:io';
 
 import 'package:dart_console/dart_console.dart';
-import 'package:dart_todo/todo.dart';
+import 'package:todo_cli/todo.dart';
 
 class GUI {
   final Project project;

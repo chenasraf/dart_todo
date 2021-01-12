@@ -1,7 +1,7 @@
 import 'dart:io';
 
-import 'package:dart_todo/gui.dart';
-import 'package:dart_todo/todo.dart';
+import 'package:todo_cli/gui.dart';
+import 'package:todo_cli/todo.dart';
 
 Future<Project> _loadProject([File file]) async {
   final project = file != null ? Project.fromFile(file) : Project.defaultFile();
@@ -11,7 +11,7 @@ Future<Project> _loadProject([File file]) async {
 
 void main(List<String> arguments) async {
   final args = List.from(arguments, growable: true);
-  bool silent = false;
+  var silent = false;
   Project loadedProject;
   if (args.isEmpty) {
     await GUI(project: await _loadProject());

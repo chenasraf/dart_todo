@@ -1,7 +1,8 @@
-name: dart_todo
-description: A fully fledged, simple to use to do terminal app
-version: 1.0.0
-# homepage: https://www.example.com
+name: todo_cli
+description: A fully fledged, simple to use to do terminal app with a GUI
+version: 0.9.0+1
+homepage: https://github.com/chenasraf/dart_todo
+
 environment:
   sdk: ">=2.10.0 <3.0.0"
 
