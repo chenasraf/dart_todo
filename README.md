@@ -31,8 +31,8 @@ if needed.
 
 ## Command line options
 
-| Option          | Description                                                                       | Default Value | example                    |
-| :-------------- | :-------------------------------------------------------------------------------- | :-----------: | :------------------------- |
-| `--add`, `-a`   | The dashes are optional. Adds a todo entry to the file.                           |     None      | `todo a My todo title`     |
-| `--file`, `-f`  | Specify path to use. May be relative path or absolute path.                       |    `.todo`    | `todo -f my/todo.md`       |
-| `--quiet`, `-q` | Will not echo results in operations, such as confirmation for adding to do entry. |     false     | `todo -q -a My todo title` |
+| Option          | Description                                                                       | Default | Example                    |
+| :-------------- | :-------------------------------------------------------------------------------- | :-----: | :------------------------- |
+| `--add`, `-a`   | The dashes are optional. Adds a todo entry to the file.                           |  None   | `todo a My todo title`     |
+| `--file`, `-f`  | Specify path to use. May be relative path or absolute path.                       | `.todo` | `todo -f my/todo.md`       |
+| `--quiet`, `-q` | Will not echo results in operations, such as confirmation for adding to do entry. |  false  | `todo -q -a My todo title` |
